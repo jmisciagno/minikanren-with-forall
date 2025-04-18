@@ -38,7 +38,7 @@ An "exists" expression is equivalent to a "fresh" expression.
 (run* (q) (forall (a) (implies  (== 0 4)
 				(== 1 0)))) ; => succeeds
 
-(run* (q) (forall (a b c d) (implies (conj (== a b) (== b c))
+(run* (q) (forall (a b c) (implies (conj (== a b) (== b c))
 				     (== a c))))) ; => succeeds
 
 ```
