@@ -30,4 +30,12 @@ An "exists" expression is equivalent to a "fresh" expression.
 (run* (q) (forall (p) (exists (p0) (conde ((== p p0) (== q 99))
 			      	   	  ((== p p)  (== q 100)))))) ; => (99 100)
 
+(run* (q) (forall (p) (implies (== p 0)
+			       (disj (== p 0) (== p 1))))) ; => succeeds
+
+(run* (q) (forall (a) (implies (== a 1) (== q a)))) ; => 1
+
+(run* (q) (forall (a) (implies  (== 0 4)
+				(== 1 0)))) ; => succeeds
+
 ```
