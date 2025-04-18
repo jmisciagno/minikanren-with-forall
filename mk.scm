@@ -168,7 +168,7 @@
 			   (if (null? t)
 			       fail
 			       (if (fold-left _and #t
-					      (log (fix (fold-left _or
+					      (id (fix (fold-left _or
 							 #f
 							 (map (lambda (x0) (map (lambda (x1) (fact-in-worlds? x1 g1-res)) (car x0))) g2-res)))))
 				     (remove-universal (_conj g1 g2))
