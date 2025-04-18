@@ -152,6 +152,10 @@
   (lambda (s/c)
     (remove-universal-aux (take-all (g s/c)))))
 
+(define (log x) (begin (displayln x) x))
+(define (id x) x)
+
+(define (fix x) (if (eq? x #f) '(#f) x))
 
 (define (implies g1 g2)
   (lambda (s/c)
@@ -164,14 +168,12 @@
 			   (if (null? t)
 			       fail
 			       (if (fold-left _and #t
-					      (fold-left _or
+					      (log (fix (fold-left _or
 							 #f
-							 (map (lambda (x0) (map (lambda (x1) (fact-in-worlds? x1 g1-res)) (car x0))) g2-res)))
+							 (map (lambda (x0) (map (lambda (x1) (fact-in-worlds? x1 g1-res)) (car x0))) g2-res)))))
 				     (remove-universal (_conj g1 g2))
 				     fail))))
 		       g1-res)) s/c)))))
-
-
 
 
 (define (mplus $1 $2)
